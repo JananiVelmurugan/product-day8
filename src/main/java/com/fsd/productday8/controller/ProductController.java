@@ -30,7 +30,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{id}")
-	public Product findById(@PathVariable int id) {
+	public Product findById(@PathVariable int id) throws Exception {
 		return service.display(id);
 	}
 

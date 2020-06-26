@@ -27,11 +27,15 @@ public class ProductServiceImpl {
 		repository.save(product);
 	}
 
-	public Product display(int id) {
+	public Product display(int id) throws Exception {
 //		return dao.findById(id);
 		Optional<Product> result = repository.findById(id);
-		Product product = result.get();
-		return product;
+		if (!result.isPresent()) {
+			throw new Exception("Sorry could not able to find the product with the id");
+		} else {
+			Product product = result.get();
+			return product;
+		}
 	}
 
 	public List<Product> displayAll() {
